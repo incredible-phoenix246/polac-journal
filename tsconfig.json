@@ -26,7 +26,8 @@
       "styles": ["./src/styles/globals.scss"],
       "ui/*": ["./src/components/ui/*"],
       "auth": ["./src/auth.ts"],
-      "components/*": ["./src/components/*"]
+      "components/*": ["./src/components/*"],
+      "actions/*": ["./src/actions/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

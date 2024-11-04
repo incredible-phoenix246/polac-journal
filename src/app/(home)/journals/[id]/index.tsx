@@ -257,7 +257,7 @@ export default function JournalDetail() {
               <h2 className="text-2xl font-bold mb-4">{journal.title}</h2>
               <p className="mb-4">
                 This is where the full content of the journal would be
-                displayed. For demonstration purposes, we're showing a
+                displayed. For demonstration purposes, we&apos;re showing a
                 placeholder text.
               </p>
               <p className="mb-4">

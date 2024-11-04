@@ -1,0 +1,57 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int       @id @default(autoincrement())
+  first_name String
+  last_name  String
+  username   String    @unique
+  avatar     String?
+  bio        String?
+  email      String    @unique
+  password   String
+  role       Role      @default(USER)
+  journals   Journal[] @relation("UserJournals")
+  comments   Comment[] @relation("UserComments")
+}
+
+model Journal {
+  id        Int           @id @default(autoincrement())
+  title     String
+  content   String
+  status    JournalStatus @default(PENDING) // PENDING, APPROVED, REJECTED
+  userId    Int
+  user      User          @relation("UserJournals", fields: [userId], references: [id])
+  comments  Comment[]     @relation("JournalComments")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  text      String
+  journalId Int
+  userId    Int? // Optional, as visitors can comment without an account
+  user      User?    @relation("UserComments", fields: [userId], references: [id])
+  journal   Journal  @relation("JournalComments", fields: [journalId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+enum JournalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum Role {
+  USER
+  ADMIN
+}

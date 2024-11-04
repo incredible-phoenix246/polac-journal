@@ -4,13 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  Search,
-  Filter,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
